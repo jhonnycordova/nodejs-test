@@ -1,0 +1,16 @@
+{
+  "name": "backendnode",
+  "version": "0.1.0",
+  "description": "Proyecto de prueba en NodeJs - Platzi - ChatTelegram",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chat",
+    "platzi",
+    "nodejs"
+  ],
+  "author": "Jhonny Córdova",
+  "license": "MIT"
+}
