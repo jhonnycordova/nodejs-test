@@ -19,9 +19,7 @@ router.post('/message', (req, res) => {
     response.success(req, res, 'PostCreado', 201);
 });
 
-// app.use('/', (req, res) => {
-//     res.send('Hola');
-// });
+app.use('/app', express.static('public'));
 
 app.listen(3010);
 console.log('Escuchando en el puerto 3010');
