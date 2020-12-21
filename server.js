@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
+const response = require('./network/response');
 
 var app = express();
 
@@ -9,13 +10,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 
 router.get('/', (req, res) => {
-    console.log(req.query)
-    res.send('Hola desde GET!');
+    res.header({"algo-custom":"valor custm"});
+    console.log(req.headers);
+    response.success(req, res, 'Listado INDEX');
 });
 
-router.post('/', (req, res) => {
-    console.log(req.body.text);
-    res.send('Hola desde POST!');
+router.post('/message', (req, res) => {
+    response.success(req, res, 'PostCreado', 201);
 });
 
 // app.use('/', (req, res) => {
