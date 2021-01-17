@@ -21,7 +21,18 @@ async function getMessages() {
     return await Model.find();
 }
 
+async function updateText(id, message) {
+    const foundMessage = await Model.findById(id);
+
+    foundMessage.message = message;
+
+    const newMessage = await foundMessage.save();
+
+    return newMessage;
+}
+
 module.exports = {
     add: addMessage,
-    list: getMessages
+    list: getMessages,
+    updateText: updateText
 }
