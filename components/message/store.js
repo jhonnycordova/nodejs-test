@@ -1,12 +1,24 @@
 
-const list = [];
+const db = require('mongoose');
+const Model = require('./model');
+
+db.Promise = global.Promise;
+
+db.connect("mongodb+srv://jhonnycordova:.Jho2021@cluster0.eu6jb.mongodb.net/backend_node_test_db?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log('DB connected'))
+.catch((err) => {
+    console.log(err);
+});
 
 function addMessage(message) {
-    list.push(message);
+    const myMessage = new Model(message);
+    myMessage.save();
 }
 
-function getMessages() {
-    return list;
+async function getMessages() {
+    return await Model.find();
 }
 
 module.exports = {

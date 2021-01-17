@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
         .then((list) => {
             response.success(req, res, list, 200);
         }).catch(e => {
+            console.error(e);
             response.error(req, res, 'Ocurrió un error devolviendo los datos', 500);
         });
 });
