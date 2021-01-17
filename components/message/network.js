@@ -4,9 +4,13 @@ const response = require('../../network/response');
 const controller = require('./controller');
 
 router.get('/', (req, res) => {
-    res.header({"algo-custom":"valor custm"});
-    console.log(req.headers);
-    response.success(req, res, 'Listado INDEX');
+    // res.header({"algo-custom":"valor custm"});
+    controller.getMessages()
+        .then((list) => {
+            response.success(req, res, list, 200);
+        }).catch(e => {
+            response.error(req, res, 'Ocurrió un error devolviendo los datos', 500);
+        });
 });
 
 router.post('/', (req, res) => {
