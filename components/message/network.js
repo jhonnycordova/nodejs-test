@@ -4,8 +4,8 @@ const response = require('../../network/response');
 const controller = require('./controller');
 
 router.get('/', (req, res) => {
-    // res.header({"algo-custom":"valor custm"});
-    controller.getMessages()
+    const filterMessages = req.query.user || null;
+    controller.getMessages(filterMessages)
         .then((list) => {
             response.success(req, res, list, 200);
         }).catch(e => {
