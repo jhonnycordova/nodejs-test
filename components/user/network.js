@@ -12,4 +12,13 @@ router.post('/', (req, res) => {
         });
 });
 
+router.get('/', (req, res) => {
+    controller.getUsers()
+        .then((list) => {
+            response.success(req, res, list, 200);
+        }).catch(e => {
+            response.error(req, res, 'Ocurrió un error devolviendo los datos', 500);
+        });
+});
+
 module.exports = router;
